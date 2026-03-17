@@ -43,7 +43,11 @@ jobs:
 
       - name: Build idevice
         run: ./tools/development/build-idevice.sh
-
+      - name: Install LLVM
+        run: brew install llvm
+      - name: Install Xcode command line tools
+        run: |
+          xcode-select --install || echo "Already installed"
       - name: Build the app
         run: ./tools/release/build-app.sh
 
